@@ -14,6 +14,7 @@ from dotenv import load_dotenv
 from agent.agent import create_unity_agent, run_agent
 from knowledge.rag import build_knowledge_base, load_knowledge_base
 
+
 load_dotenv()
 
 
