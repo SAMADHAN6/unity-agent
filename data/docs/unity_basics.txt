@@ -1,0 +1,45 @@
+Unity Game Engine - Basics
+
+## MonoBehaviour Lifecycle
+Unity scripts inherit from MonoBehaviour. The key lifecycle methods are:
+
+- Awake(): Called once when the script instance is loaded. Use for self-initialization.
+- OnEnable(): Called each time the object is enabled.
+- Start(): Called before the first frame update. Use for initialization that depends on other objects.
+- Update(): Called every frame. Use for input handling and game logic.
+- FixedUpdate(): Called at fixed time intervals. Use for physics calculations.
+- LateUpdate(): Called after all Update() calls. Use for camera following logic.
+- OnDisable(): Called when the object is disabled.
+- OnDestroy(): Called when the object is destroyed.
+
+## Common Unity Components
+- Rigidbody: Adds physics simulation to a GameObject.
+- Collider: Defines the shape for physics collisions (BoxCollider, SphereCollider, MeshCollider).
+- Transform: Every GameObject has a Transform. Controls position, rotation, and scale.
+- Camera: Renders the scene from its perspective.
+- AudioSource: Plays audio clips attached to a GameObject.
+- Animator: Controls animation state machines.
+- Canvas: Root component for Unity UI elements.
+
+## C# Scripting Tips
+- Use [SerializeField] to expose private fields in the Inspector.
+- Use [Header("Label")] to organize Inspector fields with headers.
+- Use GetComponent<T>() to access other components on the same GameObject.
+- Cache component references in Awake() to avoid calling GetComponent every frame.
+- Use Debug.Log(), Debug.LogWarning(), Debug.LogError() for console output.
+
+## Physics
+- Use Rigidbody.AddForce() to apply forces.
+- Use Rigidbody.velocity for direct velocity control (use sparingly).
+- Use Physics.Raycast() to detect objects in a direction.
+- Layers and Layer Masks control which objects interact with each other.
+- Physics settings are in Edit > Project Settings > Physics.
+
+## Input System
+Legacy Input (Input.GetAxis, Input.GetKey) works out of the box.
+New Input System (package) is recommended for new projects — supports multiple devices.
+
+## Scene Management
+- Use SceneManager.LoadScene("SceneName") to load scenes.
+- Use SceneManager.LoadSceneAsync() for async loading with a loading screen.
+- Mark scenes as DontDestroyOnLoad to persist across scene changes.

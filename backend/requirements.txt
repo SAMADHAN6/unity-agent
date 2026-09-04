@@ -1,0 +1,25 @@
+# ── Web framework ────────────────────────────────────────────
+fastapi==0.141.1
+uvicorn[standard]==0.32.1
+
+# ── Environment variables ─────────────────────────────────────
+python-dotenv==1.0.1
+
+# ── LangChain ecosystem (Python 3.14 compatible) ─────────────
+langchain==1.3.18
+langchain-core==1.6.1
+langchain-groq==1.1.3             # Groq LLM integration (replaces langchain-openai)
+langchain-huggingface==1.2.2      # Local embeddings (replaces langchain-openai embeddings)
+langchain-community==0.4.2        # DirectoryLoader, TextLoader
+langchain-text-splitters==0.3.4   # RecursiveCharacterTextSplitter
+langchain-chroma==1.1.0           # LangChain wrapper for chromadb
+langgraph==1.2.11                 # Agent graph runtime
+
+# ── Local embeddings (no API key needed) ─────────────────────
+sentence-transformers==3.4.1
+
+# ── Vector store ─────────────────────────────────────────────
+chromadb==1.5.9
+
+# ── Data validation (Python 3.14 wheels) ─────────────────────
+pydantic==2.13.5

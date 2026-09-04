@@ -1,0 +1,70 @@
+Unity Performance Optimization
+
+## Profiler
+Always use the Unity Profiler (Window > Analysis > Profiler) before optimizing.
+Never guess where the bottleneck is. Profile first, then fix.
+
+## CPU Optimization
+- Avoid GetComponent<T>() in Update(). Cache references in Awake() or Start().
+- Use object pooling instead of Instantiate/Destroy frequently.
+- Reduce Update() calls — use coroutines or InvokeRepeating for periodic tasks.
+- Use Jobs System and Burst Compiler for heavy computation (DOTS).
+- Avoid string concatenation every frame (generates garbage).
+
+## GPU / Rendering Optimization
+- Reduce draw calls using Static Batching (for static objects) and Dynamic Batching.
+- Use GPU Instancing for many identical meshes.
+- Reduce polygon count on meshes; use LOD (Level of Detail) groups.
+- Compress textures; use texture atlases to reduce draw calls.
+- Bake lighting where possible instead of real-time lights.
+- Limit shadow-casting lights to 1–2 per scene for mobile.
+
+## Memory & Garbage Collection
+- Avoid allocations in hot paths (Update, FixedUpdate).
+- Use structs instead of classes for small, short-lived data.
+- Pre-allocate lists with capacity: new List<T>(capacity).
+- Use StringBuilder for string manipulation.
+
+## Object Pooling Example
+```csharp
+public class BulletPool : MonoBehaviour
+{
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private int poolSize = 20;
+
+    private Queue<GameObject> _pool = new Queue<GameObject>();
+
+    private void Awake()
+    {
+        for (int i = 0; i < poolSize; i++)
+        {
+            var obj = Instantiate(bulletPrefab);
+            obj.SetActive(false);
+            _pool.Enqueue(obj);
+        }
+    }
+
+    public GameObject Get()
+    {
+        if (_pool.Count > 0)
+        {
+            var obj = _pool.Dequeue();
+            obj.SetActive(true);
+            return obj;
+        }
+        return Instantiate(bulletPrefab);
+    }
+
+    public void Return(GameObject obj)
+    {
+        obj.SetActive(false);
+        _pool.Enqueue(obj);
+    }
+}
+```
+
+## Mobile Optimization
+- Target 60fps; profile on actual devices not just editor.
+- Use URP (Universal Render Pipeline) for mobile — more efficient than Built-in.
+- Limit particle systems; use Shuriken sparingly.
+- Use compressed audio (Vorbis for music, ADPCM for short SFX).
