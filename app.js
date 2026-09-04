@@ -2,7 +2,11 @@
  * Unity Game Dev AI Agent — Frontend Logic
  */
 
-const API_URL = "http://127.0.0.1:8000";
+const API_URL =
+  (window.location.hostname === "localhost" ||
+   window.location.hostname === "127.0.0.1")
+    ? "http://127.0.0.1:8000"
+    : "https://unity-agent-backend.onrender.com";
 
 const messagesEl  = document.getElementById("messages");
 const inputEl     = document.getElementById("user-input");
