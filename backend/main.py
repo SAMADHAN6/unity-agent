@@ -33,11 +33,15 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "https://samadhan6.github.io",
+        "http://localhost",
+        "http://127.0.0.1",
+    ],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 # Global agent + per-session thread tracking
 _agent = None
 _sessions: dict[str, str] = {}   # session_id -> thread_id
