@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unity Game Dev AI Agent</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Syntax highlighting for C# code blocks -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/csharp.min.js"></script>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">
+        <span class="logo-icon">🎮</span>
+        <span class="logo-text">Unity Agent</span>
+      </div>
+    </div>
+
+    <div class="quick-prompts">
+      <p class="section-label">Quick Questions</p>
+      <button class="quick-btn" data-prompt="How does the MonoBehaviour lifecycle work?">MonoBehaviour Lifecycle</button>
+      <button class="quick-btn" data-prompt="How do I optimize my Unity game performance?">Performance Tips</button>
+      <button class="quick-btn" data-prompt="Generate a player controller script">Player Controller</button>
+      <button class="quick-btn" data-prompt="How do I use object pooling in Unity?">Object Pooling</button>
+      <button class="quick-btn" data-prompt="What is the difference between URP and HDRP?">URP vs HDRP</button>
+      <button class="quick-btn" data-prompt="How do I use ScriptableObjects?">ScriptableObjects</button>
+    </div>
+
+    <div class="sidebar-footer">
+      <button id="clear-btn" class="clear-btn">🗑 Clear Chat</button>
+    </div>
+  </aside>
+
+  <!-- Main Chat Area -->
+  <main class="chat-container">
+
+    <header class="chat-header">
+      <h1>Unity Game Dev AI Agent</h1>
+      <span class="status-badge" id="status-badge">● Connected</span>
+    </header>
+
+    <div class="messages" id="messages">
+      <!-- Welcome message -->
+      <div class="message agent">
+        <div class="avatar">🤖</div>
+        <div class="bubble">
+          <p>Hey! I'm your Unity development assistant. Ask me anything about:</p>
+          <ul>
+            <li>C# scripting & MonoBehaviour</li>
+            <li>Physics, animation & UI</li>
+            <li>Performance optimization</li>
+            <li>Unity errors & debugging</li>
+            <li>URP / HDRP rendering</li>
+          </ul>
+          <p>What are you building today?</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="input-area">
+      <div class="input-row">
+        <textarea
+          id="user-input"
+          placeholder="Ask a Unity question... (e.g. How do I make a singleton in Unity?)"
+          rows="1"
+          autofocus
+        ></textarea>
+        <button id="send-btn" title="Send">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+          </svg>
+        </button>
+      </div>
+      <p class="input-hint">Press <kbd>Enter</kbd> to send · <kbd>Shift+Enter</kbd> for new line</p>
+    </div>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
